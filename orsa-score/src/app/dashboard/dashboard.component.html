@@ -1,0 +1,28 @@
+<div class=" text-center">
+  <h1>{{user}}</h1>
+</div>
+<select class="form-control">
+  
+    <option *ngFor="let people of peoples" value="">{{people.name}}</option>
+   
+</select>
+<div class="text-center">
+  <h1>Motivering av poäng</h1>
+</div>
+  <div class="row">
+    <div class="col-xs-12"><div class="form-group">
+      
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <h1>Poäng</h1>
+</div>
+<select class="form-control">
+    <option *ngFor="let number of [10, 9, 8 , 7, 6, 5, 4, 3, 2, 1, -1, -2, -3, -4, -5, -6, -7, -8, -9, -10]" value="">{{number}}</option>
+    
+</select>
+<button type="button" class="btn btn-default center-block" aria-label="Left Align"> Skicka för utvärdering
+  <span class="glyphicon glyphicon-glass" aria-hidden="true"></span> 
+</button>
