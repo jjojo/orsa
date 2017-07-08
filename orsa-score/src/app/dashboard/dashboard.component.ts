@@ -9,7 +9,18 @@ export class DashboardComponent implements OnInit {
 
   constructor() { }
   user= 'Jesper';
+  
   ngOnInit() {
   }
+  peoples  = [
+    { name: 'Jesper'},
+    { name: 'Axel'},
+    { name: 'Oliver'},
+    { name: 'Jonas'},
+    { name: 'Andreas'},
+    { name: 'Johan A'},
+    { name: 'Krillmackan'},
+    { name: 'Christian'}
+  ];
 
 }
