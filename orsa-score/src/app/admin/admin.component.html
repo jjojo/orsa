@@ -1,0 +1,32 @@
+﻿<div class="container-fluid">
+  <h1>Admin</h1>
+</div>
+<div class="panel-group" id="accordion">
+
+  <div class="panel panel-default" *ngFor="let data of scoreSuggestion">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{data.id}}">
+          {{data.points}} Poäng:  {{data.by}} -> {{data.name}}
+        </a>
+      </h4>
+    </div>
+    <div id="{{data.id}}" class="panel-collapse collapse in">
+      <div class="panel-body">
+        Motivering: {{data.motivation}} <br />
+
+        <button data-target="#accept" class=" btn btn-success">Accept</button>
+
+        <div id="accept" class="collapse"></div>
+
+        <button data-target="#decline" class=" btn btn-danger">Decline</button>
+
+        <div id="decline" class="collapse"></div>
+
+        <button (click) ="addpoints(data.points)" class=" btn btn-danger">Decline</button>
+
+        <div id="decline" class="collapse"></div>
+      </div>
+    </div>
+  </div>
+</div>
