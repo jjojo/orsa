@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
 
   constructor() { }
-  user= 'Jesper';
-  
+  user='jesper';
+
   ngOnInit() {
   }
   peoples  = [
@@ -22,5 +22,11 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
-
+  onSubmit(form: any): void { 
+    form.senderID = this.user;
+    console.log('you submitted value:', form);  
+  }
+  getUser() {
+    return this.user;
+  }
 }

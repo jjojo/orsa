@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,12 @@ export class HomeComponent implements OnInit {
 
   constructor() { }
   title = 'Bäckas Fläskmaräng 2017';
-
+  
   ngOnInit() {
+  }
+  
+  onSubmit(form: any): void {  
+    console.log('you submitted value:', form);  
   }
 
 }
