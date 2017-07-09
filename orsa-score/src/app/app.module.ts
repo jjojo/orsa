@@ -1,16 +1,39 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {AppRoutingModule} from './app-routing.module'
+
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from '../environments/environment';
+import {SuggestionService} from './services/suggestion.service'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {   FormsModule,  ReactiveFormsModule  } from '@angular/forms';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    DashboardComponent,
+    AdminComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    SuggestionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
