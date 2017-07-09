@@ -17,17 +17,17 @@ export class AuthService {
     this.db = db;
   }
 
-  login(input: string): Observable<boolean> {
-    return this.db.object('/password').map( password => {
-      if ( password.$value === input ) {
-        this.isLoggedIn = true;
-        return true;
-      } else {
-        this.isLoggedIn = false;
-        return false;
-      }
-    });
-  }
+//   login(input: string): Observable<boolean> {
+//     return this.db.object('/password').map( password => {
+//       if ( password.$value === input ) {
+//         this.isLoggedIn = true;
+//         return true;
+//       } else {
+//         this.isLoggedIn = false;
+//         return false;
+//       }
+//     });
+//   }
 
   logout(): void {
     this.isLoggedIn = false;
