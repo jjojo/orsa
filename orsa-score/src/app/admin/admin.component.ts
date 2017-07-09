@@ -13,7 +13,7 @@ export class AdminComponent implements OnInit {
     constructor( private suggestionService: SuggestionService) {
     
     }
-    points=0;
+
     scoreSuggestions = [
     ];
 

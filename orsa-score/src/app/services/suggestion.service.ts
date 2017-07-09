@@ -36,6 +36,16 @@ export class SuggestionService {
      })
    }
 
+   updateSuggestion(key: string, suggestion: JSON) {
+    this.suggestions.update(key, suggestion);
+  }
+
+  deleteSuggeation(key: string) {
+    this.suggestions.remove(key);
+  }
+
+
+
   // createTeam(name: string): Observable<boolean> {
   //   return this.db.list('/teams', { query: { orderByChild: 'name', equalTo: name}}).map( response => {
   //     if ( response.length === 0 ) {
