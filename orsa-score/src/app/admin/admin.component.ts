@@ -25,10 +25,27 @@ export class AdminComponent implements OnInit {
         })
     }
 
-    addpoints(points) {
-        
-        this.scoreSuggestions[0].points
-        console.log(points);
+    acceptData(suggestion){
+        console.log(suggestion.$key)
+
+    }
+
+    declineData(suggestion){
+        this.suggestionService.deleteSuggestion(suggestion.$key);
+    }
+
+    addPoints(suggestion) {
+        if(suggestion.points<10){
+           suggestion.points++;
+        }
+        if(suggestion.points===0) suggestion.points = 1
+    }
+
+    subtractPoints(suggestion) {
+        if(suggestion.points>-10){
+           suggestion.points--;
+        }
+        if(suggestion.points===0) suggestion.points = -1
     }
 
 
