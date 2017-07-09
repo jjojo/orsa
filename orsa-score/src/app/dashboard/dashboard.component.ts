@@ -8,27 +8,10 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
   styleUrls: ['./dashboard.component..styl']
 })
 export class DashboardComponent implements OnInit {
-  
-  suggestions: FirebaseListObservable<any[]>;
-  db: AngularFireDatabase;
 
-  constructor(db: AngularFireDatabase) {
-    this.db = db;
-    this.suggestions = db.list('/suggestions');
-  }
+  suggestions: any
 
-  getSuggsetionTest() {
-        console.log(this.suggestions)
-
-    return this.db.list('/suggestions', {query: {limitToLast: 10}}).map( list => {
-      console.log(list)
-       return list;
-     })
-  }
-
-  addItem(newName: string) {
-    this.suggestions.push({ text: newName });
-  }
+  constructor( private suggestionService: SuggestionService) { }
 
   user= 'Jesper';
 
@@ -44,10 +27,12 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
-  onSubmit(form: any): void { 
+
+  onSubmit(form: any): void {
     form.senderID = this.user;
-    console.log('you submitted value:', form);  
+    this.suggestionService.addSuggestion(form)
   }
+
   getUser() {
     return this.user;
   }

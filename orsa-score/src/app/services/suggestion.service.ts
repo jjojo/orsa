@@ -9,16 +9,33 @@ import 'rxjs/add/operator/map';
 export class SuggestionService {
   suggestions: FirebaseListObservable<any[]>;
   db: AngularFireDatabase;
+
   constructor(db: AngularFireDatabase) {
     this.db = db;
-    this.suggestions = db.list('/suggestions');
+    this.suggestions = db.list('/suggestions', { preserveSnapshot: true });
+    this.suggestions.subscribe(snapshots => {
+      snapshots.forEach(snapshot => {
+      console.log(snapshot.key)
+      console.log(snapshot.val())
+    });
+  })
   }
+
 
   getSuggestions() {
     return this.db.list('/suggestions', {query: {limitToLast: 10}}).map( list => {
        return list;
      })
   }
+
+  addSuggestion(object: JSON) {
+     this.suggestions.push(object).then(_ => {
+       return "Success, data added to firebase"
+     }).catch( error => {
+       return error
+     })
+   }
+
   // createTeam(name: string): Observable<boolean> {
   //   return this.db.list('/teams', { query: { orderByChild: 'name', equalTo: name}}).map( response => {
   //     if ( response.length === 0 ) {
