@@ -13,6 +13,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {   FormsModule,  ReactiveFormsModule  } from '@angular/forms';
 import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
@@ -27,6 +28,8 @@ import { AdminComponent } from './admin/admin.component';
     AppRoutingModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     SuggestionService

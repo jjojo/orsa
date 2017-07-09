@@ -44,5 +44,11 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
-
+  onSubmit(form: any): void { 
+    form.senderID = this.user;
+    console.log('you submitted value:', form);  
+  }
+  getUser() {
+    return this.user;
+  }
 }
