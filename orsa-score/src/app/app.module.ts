@@ -6,15 +6,15 @@ import {AppRoutingModule} from './app-routing.module'
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
+import {SuggestionService} from './services/suggestion.service'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-<<<<<<< HEAD
 import {   FormsModule,  ReactiveFormsModule  } from '@angular/forms';
-=======
 import { AdminComponent } from './admin/admin.component';
->>>>>>> cfb818c7450cd9c3572ea4ca2c496df07bbbf6e0
 
 @NgModule({
   declarations: [
@@ -26,10 +26,14 @@ import { AdminComponent } from './admin/admin.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
-    ReactiveFormsModule 
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    SuggestionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
