@@ -11,6 +11,7 @@
 export class AdminComponent implements OnInit {
 
     constructor() {
+    
     }
 
     scoreSuggestion = [
@@ -23,7 +24,7 @@ export class AdminComponent implements OnInit {
     }
 
     addpoints(points) {
-        points++;
+        this.scoreSuggestion[0].points
         console.log(points);
     }
 
