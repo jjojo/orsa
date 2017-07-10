@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h1>Highscore</h1>
+</div>
+
+<div class="panel-group" id="accordion">
+    <div class="panel panel-default" *ngFor="let score of scoreList.slice().reverse()" >
+      <div class="panel-heading">
+        <h4 class="panel-title">
+              {{score.name}} poäng: {{score.points}}
+        </h4>
+      </div>
+    </div>
+</div>

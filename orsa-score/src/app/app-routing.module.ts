@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component'
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { AdminComponent } from './admin/admin.component'
+import { HighscoreComponent} from './highscore/highscore.component'
 const routes: Routes = [
    {
        path: '',
@@ -15,6 +16,10 @@ const routes: Routes = [
    {
        path: 'admin',
        component: AdminComponent
+   },
+   {
+       path: 'highscore',
+       component: HighscoreComponent
    }
 ];
 
@@ -25,4 +30,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routedComponents = [HomeComponent, DashboardComponent];
+export const routedComponents = [HomeComponent, DashboardComponent, HighscoreComponent];

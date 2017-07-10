@@ -10,25 +10,18 @@
         class="ui form">
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-    <input id="usrname" type="text" class="form-control" name="usrname" ngModel placeholder="Username">
+    <input id="usrname" type="text" class="form-control" name="username" [(ngModel)]="username" placeholder="Username">
   </div>
 
   <div class="input-group">
     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-    <input id="password" type="password" class="form-control" name="password" ngModel placeholder="Password">
+    <input id="password" type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
   </div>
 
-  <button type="submit" class="ui btn center-block" aria-label="Left Align"> Log In
+  <button type="submit" class="ui btn center-block" (click)="btnClick()" aria-label="Left Align"> Log In
   <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
 </button>
 </form>
-
-
-
-
-<!--<button type="button" class="btn btn-default center-block" aria-label="Left Align"> Klicka här för dagens citat-->
-  <!--<span  aria-hidden="true"></span> -->
-<!--</button>-->
 
 
 

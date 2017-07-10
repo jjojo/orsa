@@ -15,19 +15,19 @@
       <div class="panel-body">
         Motivering: {{data.motivering}} <br />
 
-        <button data-target="#accept" class=" btn btn-success">Accept</button>
+        <button (click) ="acceptData(data)" data-target="#accept" class=" btn btn-success">Accept</button>
 
         <div id="accept" class="collapse"></div>
 
-        <button data-target="#decline" class=" btn btn-danger">Decline</button>
+        <button (click) ="declineData(data)"data-target="#decline" class=" btn btn-danger">Decline</button>
 
         <div id="decline" class="collapse"></div>
   
-        <button (click) ="addpoints(data.points)" class=" btn btn-success">
+        <button (click) ="addPoints(data)" class=" btn btn-success">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 
         </button>
         <span>{{data.points}}</span>
-        <button (click) ="addpoints(data.points)" class=" btn btn-danger">
+        <button (click) ="subtractPoints(data)" class=" btn btn-danger">
           <span class="glyphicon glyphicon-minus" aria-hidden="true"></span> 
         </button>
 
