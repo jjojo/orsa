@@ -47,7 +47,7 @@ export class SuggestionService {
   }
 
   getHighscore(user: string) {
-    return this.db.list('/highscore' + '/' + user, {query: {limitToLast: 1000}}).map( list => {
+    return this.db.list('/highscore' + '/' + user, {query: {orderByChild:'points', limitToLast: 1000}}).map( list => {
       return list;
     })
   }
