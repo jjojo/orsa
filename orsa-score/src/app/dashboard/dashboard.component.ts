@@ -18,9 +18,6 @@ export class DashboardComponent implements OnInit {
   constructor( private router: Router, private suggestionService: SuggestionService) { }
 
   user= 'Jesper';
-
-  ngOnInit() {
-  }
   peoples  = [
     { name: 'Jesper'},
     { name: 'Axel'},
@@ -31,13 +28,19 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
+  ngOnInit() {
+  }
 
+ 
+
+  
   onSubmit(form: any): void {
     form.senderID = this.user;
     this.suggestionService.addSuggestion(form)
-    window.location.reload();
+    // window.location.reload();
 
   }
+  
   getUser() {
     return this.user;
   }
