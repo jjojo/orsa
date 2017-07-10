@@ -3,27 +3,29 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/take';
+
 
 
 @Injectable()
 export class SuggestionService {
   suggestions: FirebaseListObservable<any[]>;
+  highscore: FirebaseListObservable<any[]>;
   db: AngularFireDatabase;
 
   constructor(db: AngularFireDatabase) {
     this.db = db;
-    this.suggestions = db.list('/suggestions', { preserveSnapshot: true });
-    this.suggestions.subscribe(snapshots => {
-      snapshots.forEach(snapshot => {
-      console.log(snapshot.key)
-      console.log(snapshot.val())
-    });
-  })
+
+    // suggestions list firebase
+    this.suggestions = db.list('/suggestions');
+
+    // highscore list firebase
+    this.highscore = db.list('/highscore');
   }
 
 
   getSuggestions() {
-    return this.db.list('/suggestions', {query: {limitToLast: 10}}).map( list => {
+    return this.db.list('/suggestions', {query: {limitToLast: 1000}}).map( list => {
        return list;
      })
   }
@@ -40,9 +42,37 @@ export class SuggestionService {
     this.suggestions.update(key, suggestion);
   }
 
-  deleteSuggeation(key: string) {
+  deleteSuggestion(key: string) {
     this.suggestions.remove(key);
   }
+
+  getHighscore(user: string) {
+    return this.db.list('/highscore' + '/' + user, {query: {limitToLast: 1000}}).map( list => {
+      return list;
+    })
+  }
+
+  // Updates the individual score-suggestions sent from admin.component.ts
+  updateHighscore(user: string, points: number, suggestionKey: string) {
+    this.db.object('/highscore/' + user)
+    .take(1)
+    .subscribe( data => {
+      let p: number = parseInt(data.points) + points
+      this.highscore.update(user,{points:p}).then( success => {
+        console.log("Highscore updated")
+        this.deleteSuggestion(suggestionKey)
+      })
+    })
+  }
+    
+    
+    // })
+    //let points = 60
+    //const highs = {name:key, points:points}
+    //this.highscore.update(key, highs)
+    //this.highscore[key] = suggestion['points']
+    //this.highscore.update(key, highscore);
+  
 
 
 
