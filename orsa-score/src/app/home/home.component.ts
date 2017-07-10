@@ -1,5 +1,5 @@
-import {
-  Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,7 +9,7 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
   title = 'Bäckas Fläskmaräng 2017';
   
   ngOnInit() {
@@ -17,6 +17,9 @@ export class HomeComponent implements OnInit {
   
   onSubmit(form: any): void {  
     console.log('you submitted value:', form);  
+  }
+  btnClick(){
+    this.router.navigateByUrl('/dashboard');
   }
 
 }

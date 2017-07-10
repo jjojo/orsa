@@ -40,7 +40,7 @@ export class SuggestionService {
     this.suggestions.update(key, suggestion);
   }
 
-  deleteSuggeation(key: string) {
+  deleteSuggestion(key: string) {
     this.suggestions.remove(key);
   }
 
