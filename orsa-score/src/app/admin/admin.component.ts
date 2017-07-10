@@ -1,5 +1,9 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import {SuggestionService} from '../services/suggestion.service'
+import { LoginService } from '../services/login.service'
+import { Router } from '@angular/router';
+
+
 @Component({
     selector: 'app-admin',
     templateUrl: './admin.component.html',
@@ -10,8 +14,11 @@ import {SuggestionService} from '../services/suggestion.service'
 
 export class AdminComponent implements OnInit {
 
-    constructor( private suggestionService: SuggestionService) {
-    
+    constructor( private router: Router,private loginService: LoginService, private suggestionService: SuggestionService) {
+        this.loginService = loginService
+        if (!loginService.isSignedIn && this.loginService.user !== 'admin') {
+            router.navigate(['/']);
+        }
     }
 
     scoreSuggestions = [
