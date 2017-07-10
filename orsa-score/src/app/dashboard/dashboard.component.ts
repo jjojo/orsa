@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   suggestions: any
   user: string
 
+
   constructor( private firebaseAuth: AngularFireAuth, private loginService: LoginService, private router: Router, private suggestionService: SuggestionService) { 
     this.loginService = loginService
     if (!loginService.isSignedIn) {
@@ -28,6 +29,7 @@ export class DashboardComponent implements OnInit {
   }
 
   errorMsg: string
+
   peoples  = [
     { name: 'Jesper'},
     { name: 'Axel'},
@@ -38,7 +40,10 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
+  ngOnInit() {
+  }
 
+ 
   ngOnInit() {
     this.peoples.forEach(obj => {
       if( obj.name === this.user){
@@ -58,8 +63,4 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  
-  getUser() {
-    return this.user;
-  }
 }
