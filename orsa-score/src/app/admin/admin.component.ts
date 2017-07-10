@@ -13,22 +13,39 @@ export class AdminComponent implements OnInit {
     constructor( private suggestionService: SuggestionService) {
     
     }
-    
+
     scoreSuggestions = [
     ];
 
 
     ngOnInit() {
         this.suggestionService.getSuggestions().subscribe(suggestions => {
-            console.log(suggestions);
             this.scoreSuggestions = suggestions;
         })
     }
 
-    addpoints(points) {
-        
-        this.scoreSuggestions[0].points
-        console.log(points);
+    acceptData(suggestion) {
+        // POINTS MUST BE SENT AS NUMBER!
+        this.suggestionService.updateHighscore(suggestion.targetID, parseInt(suggestion.points), suggestion.$key)
+
+    }
+
+    declineData(suggestion) {
+        this.suggestionService.deleteSuggestion(suggestion.$key);
+    }
+
+    addPoints(suggestion) {
+        if(suggestion.points < 10){
+           suggestion.points++;
+        }
+        if(suggestion.points===0) suggestion.points = 1
+    }
+
+    subtractPoints(suggestion) {
+        if(suggestion.points>-10){
+           suggestion.points--;
+        }
+        if(suggestion.points===0) suggestion.points = -1
     }
 
 
