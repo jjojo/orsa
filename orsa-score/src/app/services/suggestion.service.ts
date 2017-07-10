@@ -46,8 +46,8 @@ export class SuggestionService {
     this.suggestions.remove(key);
   }
 
-  getHighscore(user: string) {
-    return this.db.list('/highscore' + '/' + user, {query: {orderByChild:'points', limitToLast: 1000}}).map( list => {
+  getHighscore() {
+    return this.db.list('/highscore', {query: {orderByChild:'points', limitToLast: 1000}}).map( list => {
       return list;
     })
   }

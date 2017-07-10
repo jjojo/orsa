@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SuggestionService } from '../services/suggestion.service'
 
 @Component({
   selector: 'app-highscore',
@@ -7,15 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HighscoreComponent implements OnInit {
 
-  constructor() {
+  constructor(private suggestionService: SuggestionService) {
    }
-  scoreList = [
-        {name:'jesper', points:100},
-        {name:'jonas', points:4},
-        {name:'axel', points:8},
-      ]
+  scoreList = []
 
   ngOnInit() {
+    this.suggestionService.getHighscore().subscribe(highscores => {
+            this.scoreList = highscores;
+        })
   }
 
 
