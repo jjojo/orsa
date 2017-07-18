@@ -40,10 +40,7 @@ export class DashboardComponent implements OnInit {
     { name: 'Krillmackan'},
     { name: 'Christian'}
   ];
-  ngOnInit() {
-  }
-
- 
+  
   ngOnInit() {
     this.peoples.forEach(obj => {
       if( obj.name === this.user){
