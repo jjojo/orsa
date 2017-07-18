@@ -24,6 +24,10 @@ export class AdminComponent implements OnInit {
     scoreSuggestions = [
     ];
 
+    btnClick(){
+    this.router.navigateByUrl('/highscore');
+  }
+
 
     ngOnInit() {
         this.suggestionService.getSuggestions().subscribe(suggestions => {
