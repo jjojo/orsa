@@ -17,6 +17,9 @@ export class HighscoreComponent implements OnInit {
         }
     }
   scoreList = []
+  btnClick(){
+    this.router.navigateByUrl('/admin');
+  }
 
   ngOnInit() {
     this.suggestionService.getHighscore().subscribe(highscores => {

@@ -1,5 +1,8 @@
 ﻿<div class="container-fluid">
   <h1>Admin</h1>
+  <button type="submit" class="ui btn center-block" (click)="btnClick()" aria-label="Left Align"> Highscore
+  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
+</button>
 </div>
 <div class="panel-group" id="accordion">
 
@@ -11,7 +14,7 @@
         </a>
       </h4>
     </div>
-    <div id="{{i}}" class="panel-collapse collapse in">
+    <div id="{{i}}" class="panel-collapse collapse">
       <div class="panel-body">
         Motivering: {{data.motivering}} <br />
 
@@ -35,4 +38,5 @@
       </div>
     </div>
   </div>
+  
 </div>

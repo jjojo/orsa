@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   onSubmit(form: any): void {  
     console.log('Inloggad som: ', form.username )
     this.loginService.login(form.username, form.password).then( sucess => {
-      console.log(this.loginService.user)
        if(this.loginService.isSignedIn && this.loginService.user === 'admin'){
         this.router.navigate(['admin']);
        }
